@@ -1,0 +1,27 @@
+import axios from "axios";
+
+
+const REACT_APP_BASE_URL = 'https://youtube-v31.p.rapidapi.com'
+
+const options = {
+  url: REACT_APP_BASE_URL,
+  params: { 
+    maxResults: 50,
+  },
+  headers: {
+    'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+  }
+};
+
+// axios.request(options).then(function (response) {
+// 	console.log(response.data);
+// }).catch(function (error) {
+// 	console.error(error);
+// });
+
+export const fetchFromAPI = async (url) => {
+     const { data } = await axios.get(`${REACT_APP_BASE_URL}/${url}`, options);
+
+     return data;
+}
